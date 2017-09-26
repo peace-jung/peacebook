@@ -1,0 +1,106 @@
+html {
+  background-color: #FFF8F1;
+  height: 650px;
+}
+body {
+  height: 100%;
+}
+
+.nav {
+    width: 100%;
+    height: 70px;
+    background-color: #803E15;
+}
+
+.wrapper {
+    width: 100%;
+    height: 100%;
+    background-position: center;
+    background-color: #FFF8F1;
+    /*background-image: url(http://cdn.wallpapersafari.com/61/86/kHOiLq.jpg);*/
+}
+.main {
+    padding-top: 0;
+    height: 100%;
+    background-color: #FFF8F1;
+}
+.logo {
+    width: 235px;
+    margin: 0 auto 30px 10px;
+}
+.logo img {
+    width: 150px;
+    height: auto;
+    margin: 10px;
+}
+
+.login_h1 h1 {
+    width: 200px;
+    margin: 0 auto 0 auto;
+    padding: 40px 44px 38px 44px;
+    font-size: 30px;
+    text-align: center;
+}
+.login_h1 h1 {
+    width: 200px;
+    margin: 0 auto 0 auto;
+    padding: 40px 44px 38px 44px;
+    font-size: 30px;
+}
+
+.login_box {
+    width: 337px;
+    height: 360px;
+    background-color: white;
+    margin: 0 auto 0 auto;
+    padding: 40px 44px 38px 44px;
+    opacity: 1;
+    border-radius: 5px;
+}
+.login_box .input_login {
+    border-bottom: 2px solid #c4c5c4;
+    padding: 20px 0 9px 0;
+}
+.login_box .input_login input {
+    width: 100%;
+    color: #828180;
+    font-size: 15px;
+    border: none;
+}
+.login_box .check {
+    color: black;
+    font-size: 14px;
+    padding: 9px 0 15px 0;
+}
+.login_box .loginBtn input {
+    width: 100%;
+    height: 55px;
+    color: #fff;
+    background-color: #00a6de;
+    font-size: 16px;
+    padding: 17px 0 16px;
+    border: 0;
+    cursor: pointer;
+}
+.login_box .signupBtn input {
+    width: 100%;
+    height: 55px;
+    color: #fff;
+    background-color: orange;
+    font-size: 16px;
+    padding: 17px 0 16px;
+    border: 0;
+    margin-top: 20px;
+    cursor: pointer;
+}
+.login_box .findIdBtn input {
+    width: 100%;
+    height: 55px;
+    color: #fff;
+    background-color: #556d9c;
+    font-size: 16px;
+    padding: 17px 0 16px;
+    border: 0;
+    margin-top: 10px;
+    cursor: pointer;
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>PeaceBook</title>
+
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/index.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="nav">
+        </div>
+        <div class="main">
+            <div class="login_h1">
+                <h1>로그인</h1>
+            </div>
+            <div class="login_box">
+                <form action="/login" method="post">
+                    <div class="input_login">
+                        <input type="text" name="username" placeholder="아이디를 입력하세요" autofocus="autofocus" required>
+                    </div>
+                    <div class="input_login">
+                        <input type="password" name="password" placeholder="패스워드를 입력하세요" required>
+                    </div>
+                    <div class="check">
+                        <input type="checkbox"> 아이디 저장하기
+                    </div>
+                    <div class="loginBtn">
+                        <input type="submit" value="로그인">
+                    </div>
+                </form>
+
+                <div class="signupBtn">
+                    <input type="button" value="회원가입" onclick='location.href="/signup"'>
+                </div>
+                <div class="check">
+                    <a href="#" class="id">아이디 찾기</a>
+                    <a href="#" class="pw">비밀번호 찾기</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

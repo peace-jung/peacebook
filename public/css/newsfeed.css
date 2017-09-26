@@ -1,0 +1,132 @@
+body {
+  background-color: #FFF8F1;
+}
+
+/* banner */
+.banner {
+	width: 100%;
+	min-height: 150px;
+	max-height: 200px;
+  background-color: #FFF8F1;
+}
+.banner h1 {
+	width: 100%;
+	padding: 100px 0px 10px 10px;
+  font-size: 30px;
+  margin: 0;
+}
+
+/* logo */
+/* .logo {
+	width: 235px;
+	margin: 0 auto 30px 10px;
+}
+.logo img {
+	width: 150px;
+	height: auto;
+	margin: 10px;
+} */
+
+/* navbar */
+
+.navbar-inverse {
+	background-color: #AA6439;
+	border-color: #803E15;
+}
+.navbar-inverse .navbar-brand {
+	color: #fff;
+}
+.navbar-inverse .navbar-brand:hover,
+.navbar-inverse .navbar-brand:focus {
+	color: #eeeeee;
+	background-color: transparent;
+}
+.navbar-inverse .navbar-nav > li > a {
+	color: #FFCBAA;
+}
+.navbar-inverse .navbar-nav > .active > a,
+.navbar-inverse .navbar-nav > .active > a:hover,
+.navbar-inverse .navbar-nav > .active > a:focus {
+	color: #ffffff;
+  background-color: #803E15;
+  font-weight: bold;
+}
+.navbar-inverse .navbar-toggle {
+	border-color: #FFCBAA;
+}
+.navbar-inverse .navbar-toggle:hover,
+.navbar-inverse .navbar-toggle:focus {
+	background-color: #803E15;
+}
+.navbar-inverse .navbar-toggle .icon-bar {
+	background-color: #eeeeee;
+}
+.sticky {
+	position: sticky;
+	top : 0px;
+}
+.upperIndex {
+	z-index: 9 !important;
+}
+
+/* left-side */
+.thumbnail {
+  background-color: #FFF8F1;
+	margin: 15px 0 0 0;
+	border: none;
+}
+.thumbnail .caption > h4,
+.thumbnail .caption > p,
+.thumbnail .caption > span {
+  text-align: center;
+	margin: 0;
+}
+
+/* main */
+.new-status {
+  width: 100%;
+  height: 180px;
+  padding: 15px auto 15px auto;
+}
+.new-status > p,
+.new-status > textarea,
+.new-status > button {
+  width: 100%;
+}
+
+.status-box {
+  width: 100%;
+  height: auto;
+	padding: 15px auto 15px auto;
+}
+.status-box > div > div > p {
+  font-size: 20px;
+}
+.media {
+  background-color: #ffffff;
+  padding: 15px 10px;
+  box-shadow: 0 0 2px 2px lightgray;
+  margin: 15px 0 15px;
+}
+.comment-btn {
+  border-top: 1px solid silver;
+  padding: 10px 0px 0px;
+}
+.comment-btn > ul {
+  padding: 0px 10px;
+}
+.comment-btn > ul > li > a {
+  color: #132752;
+}
+.comment-box {
+  border-top: 1px solid silver;
+  padding: 10px 0px 0px;
+}
+
+.comment-box > ul.list-inline {
+  margin: 0px;
+}
+
+li.username, li.commentText {
+  vertical-align: 10px;
+}

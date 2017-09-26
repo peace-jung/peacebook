@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>PeaceBook</title>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/css/newsfeed.css">
+</head>
+
+<body>
+  <!-- banner -->
+  <div class="banner">
+    <h1>
+      <%= name %>
+    </h1>
+  </div>
+
+  <!-- navbar -->
+  <nav class="navbar navbar-inverse sticky upperIndex" role="navigation">
+    <!-- navbar-menu -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+      <a class="navbar-brand" href="/">Peacebook</a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <!-- left-navbar -->
+      <ul class="nav navbar-nav">
+        <li><a href="/">뉴스피드</a></li>
+        <li><a href="/timeline">타임라인</a></li>
+        <li class="active"><a href="/friendsList">친구</a></li>
+      </ul>
+      <!-- right-navbar -->
+      <ul class="nav navbar-nav navbar-right list-inline">
+        <li><a href="/newfriends"><span class="glyphicon glyphicon-user"></span></a></li>
+        <form class="navbar-form navbar-left" role="search" method="post" action="/findFriends">
+          <div class="form-group">
+            <input type="text" class="form-control" name="friendname" placeholder="친구 찾기" required="required">
+          </div>
+        </form>
+        <li><a href="/logout">로그아웃</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </nav>
+
+  <!-- main -->
+  <main class="container">
+    <section>
+      <div class="row">
+
+        <!-- 데이터 로드 -->
+        <div class="friends-box">
+          <%
+            if(friends.length != 0) {
+            for (var i in friends) { %>
+            <div class="col-xs-4 col-sm-3 col-md-3">
+              <div class="thumbnail">
+                <a href="/timeline/<%= friends[i].userID %>">
+                  <img class="img-circle" src="http://placehold.it/150x150" alt="...">
+                </a>
+                <div class="caption">
+                  <h4 id="<%= friends[i].userID %>"><%= friends[i].name %></h4>
+                  <!-- <p><%= friends[i].birth %></p>
+                  <p><%= friends[i].sex %></p> -->
+                  <p><span class="label label-primary" style="cursor:pointer;">친구 추가</span></p>
+                </div>
+              </div>
+            </div>
+            <% }} else { %>
+              <p>해당 친구가 없어요~~</p>
+            <% } %>
+
+        </div>
+
+        <script>
+          $(document).ready(function () {
+            $('.label-primary').click(function () {
+              if ($(this).text() == "친구 신청을 요청하였습니다.") {
+                $(this).text("친구 추가");
+              } else {
+                $(this).text("친구 신청을 요청하였습니다.");
+                var id = $(this).parents().siblings('h4').attr('id');
+                console.log(id, "에게 친구요청 보냄");
+
+                $.post(
+                  '/newfriends/add',
+                  { id: id, name: '<%= name %>' },
+                  function (data) {
+                    console.log(data.result);
+                  },
+                  'json'
+                );
+              }
+
+            });
+          });
+        </script>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

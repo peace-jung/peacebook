@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Peacebook</title>
+
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+    crossorigin="anonymous">
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+  <link rel="stylesheet" href="/css/newsfeed.css">
+</head>
+
+<body>
+  <!-- banner -->
+  <div class="banner">
+    <h1>
+      <%= name %>
+    </h1>
+  </div>
+
+  <!-- navbar -->
+  <nav class="navbar navbar-inverse sticky upperIndex" role="navigation">
+    <!-- navbar-menu -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+      <a class="navbar-brand" href="/">Peacebook</a>
+    </div>
+
+    <div class="collapse navbar-collapse navbar-ex1-collapse">
+      <!-- left-navbar -->
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">뉴스피드</a></li>
+        <li><a href="/timeline">타임라인</a></li>
+        <li><a href="/friendsList">친구</a></li>
+      </ul>
+      <!-- right-navbar -->
+      <ul class="nav navbar-nav navbar-right list-inline">
+        <li><a href="/newfriends"><span class="glyphicon glyphicon-user"></span></a></li>
+        <form class="navbar-form navbar-left" role="search" method="post" action="/findFriends">
+          <div class="form-group">
+            <input type="text" class="form-control" name="friendname" placeholder="친구 찾기"  required="required">
+          </div>
+        </form>
+        <li><a href="/logout">로그아웃</a></li>
+      </ul>
+    </div>
+    <!-- /.navbar-collapse -->
+  </nav>
+
+  <!-- main -->
+  <main class="container">
+    <section>
+      <div class="row">
+
+        <!-- left-column -->
+        <div class="col-md-3">
+          <div class="thumbnail">
+            <img class="img-circle" src="http://placehold.it/150x150" alt="...">
+            <div class="caption">
+              <h4>
+                <%= name %>
+              </h4>
+              <p>
+                <%= birth %>
+              </p>
+              <p>
+                <%= phone %>
+              </p>
+              <p><span class="label label-success"  onclick="location.href='/updateInfo'" style="cursor:pointer;">개인정보수정</span>
+                <p>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- middle-column -->
+        <div class="col-md-9">
+          <!-- 글쓰기 -->
+          <div class="new-status">
+            <form action="/upload" method="post">
+              <div>
+                <h4 class="pull-left">글쓰기</h4>
+                <button type="submit" class="btn btn-success pull-right">올리기</button>
+              </div>
+              <textarea name="status" class="form-control" rows="3" required="required"></textarea>
+            </form>
+          </div>
+
+          <!-- 데이터 로드 -->
+          <div class="status-box" name="app">
+            <% for (var i in contents) { %>
+              <div class="media">
+                <a class="pull-left" href="#">
+                <img class="media-object img-circle" src="http://placehold.it/50x50" alt="Image">
+              </a>
+                <div class="media-body">
+                  <h4 class="media-heading"># <%= contents[i].writer_name %></h4>
+                  <ul class="list-inline">
+                    <li><span><span class="glyphicon glyphicon-time"></span>
+                      <%= contents[i].date %>
+                        </span>
+                    </li>
+                  </ul>
+                  <p>
+                    <%= contents[i].write %>
+                  </p>
+                </div>
+
+                <!-- 좋아요 / 댓글 -->
+                <div>
+                  <div class="comment-btn">
+                    <ul class="list-inline">
+                      <li><a onClick=""><span class="glyphicon glyphicon-thumbs-up"></span> 좋아요</a></li>
+                      <li><a onClick=""><span class="glyphicon glyphicon-comment"></span> 댓글달기</a></li>
+                      <li><a onClick=""><span class="glyphicon glyphicon-share-alt"></span> 공유하기</a></li>
+                    </ul>
+                  </div>
+
+                  <div class="comment-box">
+                    <%
+                      if(contents[i].comment) {
+                      for(var j in contents[i].comment) { 
+                    %>
+                      <ul class="list-inline">
+                        <li class="userImage">
+                          <a class="pull-left" href="#">
+                            <img class="media-object img-circle" src="http://placehold.it/30x30" alt="Image">
+                          </a></li>
+                        <li class="username"><a href=""><%= contents[i].comment[j].writer_name %></a></li>
+                        <li class="commentText"><%= contents[i].comment[j].write %></li>
+                      </ul>
+                    <% }} %>
+                    
+                      <input type="text" class="form-control" id="<%= contents[i]._id %>" name="comment" placeholder="댓글 입력" />                      
+                    
+                  </div>
+                </div>
+
+              </div>
+              <% } %>
+
+              <script>
+                $('input').keyup(function(e) {
+                  if (e.keyCode == 13) {
+                    var data = $(this).val();
+                    var id = $(this).attr('id');
+
+                    $.ajax({
+                    url: '/addComment',
+                      type: 'POST',
+                      data: { 
+                        userid: '<%= id %>',
+                        _id: id,
+                        data: data
+                      },
+                      dataType: 'json',
+                      success: function (response) {
+                        console.log(response.result);
+                        location.reload();
+                      },
+                      error: function (err) {
+                        console.log(err);
+                      }
+                    });
+                  }
+                });
+              </script>
+
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang='ko'>
+
+<head>
+    <meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PeaceBook</title>
+
+    <link rel="stylesheet" href="/css/reset.css">
+    <link rel="stylesheet" href="/css/signup.css">
+    
+    <style type="text/css">
+        .login_box .radio-group {
+            width: 100%;
+            color: black;
+            font-size: 15px;
+            padding: 20px 0 9px 0;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="wrapper">
+        <div class="nav">
+            <!-- <div class="logo">
+                <img src="../img/logo.png">
+            </div> -->
+        </div>
+        <div class="main">
+            <div class="login_h1">
+                <h1>회원가입</h1>
+            </div>
+            <div class="login_box">
+                <form action="/signup" method="post">
+                    <div class="input_login">
+                        <input type="text" name="userID" placeholder="아이디를 입력하세요" autofocus="autofocus" required>
+                    </div>
+                    <div class="input_login">
+                        <input type="password" name="userPW" placeholder="패스워드를 입력하세요" required>
+                    </div>
+                    <div class="input_login">
+                        <input type="text" name="name" placeholder="이름을 입력하세요" required>
+                    </div>
+                    <div class="input_login">
+                        <input type="date" name="birth" placeholder="생년월일을 입력하세요" required>
+                    </div>
+                    <div class="input_login">
+                        <input type="tel" name="phone" placeholder="전화번호를 입력하세요" required>
+                    </div>
+                    <div class="radio-group">
+                        <input type="radio" name="inlineRadioOptions" value="male" required>남자
+                        <input type="radio" name="inlineRadioOptions" value="female" required>여자
+                    </div>
+                    <div class="signupBtn">
+                        <input type="submit" value="회원가입">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
